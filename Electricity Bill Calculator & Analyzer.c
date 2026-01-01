@@ -28,6 +28,7 @@ void calculateBill();
 void analyzeBill();
 void addBill();
 void powerSaving();
+void saveData();
 
 int main()
 {
@@ -257,6 +258,8 @@ void powerSaving(){
     printf("2. Turn off appliances when not in use\n");
     printf("3. Use energy-efficient devices\n");
     printf("4. Avoid excessive AC usage\n");
-    printf("5. Use natural light\n");
+    printf("5. Use natural light");
     printf("\n-----------------------------------\n");
 }
+
+
