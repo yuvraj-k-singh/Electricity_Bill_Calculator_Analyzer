@@ -27,6 +27,7 @@ void addConsumer();
 void calculateBill();
 void analyzeBill();
 void addBill();
+void powerSaving();
 
 int main()
 {
@@ -59,6 +60,9 @@ int main()
     			break;
     		case 4:
     			addBill();
+    			break;
+    		case 5:
+    			powerSaving();
     			break;
     		case 6:
     			printf("Thank you for using, Use again!\n");
@@ -195,6 +199,7 @@ void analyzeBill(){
 	printf("\n----------------------------------\n");
 }
 
+//4. Add bill
 void addBill(){
 	char name[30];
 	int i, userIndex = -1, units = 0;
@@ -241,4 +246,17 @@ void addBill(){
 	users[userIndex].unit = units;
 	printf("Bill Added Successfully..............\n");
 	printf("\n-----------------------------------\n");
+	return;
+}
+
+
+//5. Power saving tips
+void powerSaving(){
+	printf("\n---------POWER SAVING TIPS----------\n");
+	printf("1. Use LED bulbs\n");
+    printf("2. Turn off appliances when not in use\n");
+    printf("3. Use energy-efficient devices\n");
+    printf("4. Avoid excessive AC usage\n");
+    printf("5. Use natural light\n");
+    printf("\n-----------------------------------\n");
 }
