@@ -147,6 +147,8 @@ void analyzeBill(){
 	char maxName[30];
 	char minName[30];
 	printf("\n-----------ANALYZE BILL-----------\n");
+	
+	//find max and min units user
 	for(i=0; i<userCount; i++){
 		if(maxUnit < users[i].unit){
 			maxUnit = users[i].unit;
@@ -179,4 +181,23 @@ void analyzeBill(){
 	printf("\n----------------------------------\n");
 }
 
-
+void addBill(){
+	char name[30];
+	int i, userIndex = -1;
+	printf("\n-----------ADD NEW BILL-----------\n");
+	printf("Enter Consumer Name: ");
+	fgets(name, sizeof(name), stdin);
+	
+	//check consumer
+	for(i=0; i<userCount; i++){
+		if(strcmp(name, users[i].name) == 0){
+			userIndex = i;
+			break;
+		}
+	}
+	
+	if(userIndex == -1) {
+		printf("No Consumer Name Founded, Try again!\n");
+		return;
+	}
+}
