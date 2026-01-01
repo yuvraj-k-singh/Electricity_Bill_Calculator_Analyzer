@@ -40,7 +40,7 @@ int main()
     	printf("1. Add New Consumer\n");
     	printf("2. Calculate Bill\n");
     	printf("3. Analyze Monthly Bill\n");
-    	printf("4. ADD New Bill\n");
+    	printf("4. Add New Bill\n");
     	printf("5. Power Saving Tips\n");
     	printf("6. Exit\n");
     	printf("--------------------------------------------------\n");
@@ -142,10 +142,24 @@ void calculateBill(){
 
 //3. Analyze Bill
 void analyzeBill(){
-	int  i, maxUnit = 0, minUnit = 0, maxRoom = 0, minRoom = 0;
-	float maxAmount = 0, minAmount = 0;
+	
+	//check if user is available or not
+	if (userCount == 0) {
+    	printf("No consumer data available to analyze!\n");
+    	return;
+	}
+
 	char maxName[30];
 	char minName[30];
+	int maxUnit = users[0].unit;
+	int minUnit = users[0].unit;
+    float maxAmount = users[0].amount;
+    float minAmount = users[0].amount;
+    strcpy(maxName, users[0].name);
+    strcpy(minName, users[0].name);
+    int maxRoom = users[0].room_no, i;
+    int minRoom = users[0].room_no;
+    
 	printf("\n-----------ANALYZE BILL-----------\n");
 	
 	//find max and min units user
@@ -168,7 +182,7 @@ void analyzeBill(){
 	printf("\n1. Max Unit: \n");
 	printf("\nName          : %s", maxName);
     printf("\nRoom Number   : %d", maxRoom);
-    printf("\nAmount        : %s", maxAmount);
+    printf("\nAmount        : %.2f", maxAmount);
     printf("\nUnits Used    : %d", maxUnit);
     
     printf("\n");
@@ -176,15 +190,18 @@ void analyzeBill(){
     printf("\n2. Min Unit: \n");
 	printf("\nName          : %s", minName);
     printf("\nRoom Number   : %d", minRoom);
-    printf("\nAmount        : %s", minAmount);
+    printf("\nAmount        : %.2f", minAmount);
     printf("\nUnits Used    : %d", minUnit);
 	printf("\n----------------------------------\n");
 }
 
 void addBill(){
 	char name[30];
-	int i, userIndex = -1;
+	int i, userIndex = -1, units = 0;
+	float amounts = 0;
 	printf("\n-----------ADD NEW BILL-----------\n");
+
+	getchar(); // clear input buffer
 	printf("Enter Consumer Name: ");
 	fgets(name, sizeof(name), stdin);
 	
@@ -196,8 +213,30 @@ void addBill(){
 		}
 	}
 	
+	//if user is not available
 	if(userIndex == -1) {
 		printf("No Consumer Name Founded, Try again!\n");
+		printf("\n-----------------------------------\n");
 		return;
 	}
+	
+	printf("Enter unit consumed: ");
+	scanf("%d", &units);
+	
+	if(units <= 50){
+		amounts = units * 4.27;
+	} else if(units >= 51 && units <= 150){
+		amounts = units * 5.23;
+	} else if(units >= 151 && units <= 300){
+		amounts = units * 6.61;
+	} else if(units >= 301){
+		amounts = units * 6.80;
+	}
+	
+	amounts += FIXED + METER_RENT;
+	
+	users[userIndex].amount = amounts;
+	users[userIndex].unit = units;
+	printf("Bill Added Successfully..............\n");
+	printf("\n-----------------------------------\n");
 }
