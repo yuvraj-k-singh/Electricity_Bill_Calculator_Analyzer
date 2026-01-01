@@ -136,3 +136,41 @@ void calculateBill(){
     return;
 }
 
+//3. Analyze Bill
+void analyzeBill(){
+	int  i, maxUnit = 0, minUnit = 0, maxRoom = 0, minRoom = 0;
+	float maxAmount = 0, minAmount = 0;
+	char maxName[30];
+	char minName[30];
+	printf("\n-----------ANALYZE BILL-----------\n");
+	for(i=0; i<userCount; i++){
+		if(maxUnit < users[i].unit){
+			maxUnit = users[i].unit;
+			maxAmount = users[i].amount;
+			maxRoom = users[i].room_no;
+			strcpy(maxName, users[i].name);
+		}
+		
+		if(minUnit > users[i].unit){
+			minUnit = users[i].unit;
+			minAmount = users[i].amount;
+			minRoom = users[i].room_no;
+			strcpy(minName, users[i].name);
+		}
+	}
+	
+	printf("\n1. Max Unit: \n");
+	printf("\nName          : %s", maxName);
+    printf("\nRoom Number   : %d", maxRoom);
+    printf("\nAmount        : %s", maxAmount);
+    printf("\nUnits Used    : %d", maxUnit);
+    
+    printf("\n");
+    
+    printf("\n2. Min Unit: \n");
+	printf("\nName          : %s", minName);
+    printf("\nRoom Number   : %d", minRoom);
+    printf("\nAmount        : %s", minAmount);
+    printf("\nUnits Used    : %d", minUnit);
+	printf("\n----------------------------------\n");
+}
