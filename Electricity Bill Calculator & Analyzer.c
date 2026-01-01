@@ -26,6 +26,7 @@ int userCount = 0;
 void addConsumer();
 void calculateBill();
 void analyzeBill();
+void addBill();
 
 int main()
 {
@@ -55,6 +56,9 @@ int main()
     			break;
     		case 3:
     			analyzeBill();
+    			break;
+    		case 4:
+    			addBill();
     			break;
     		case 6:
     			printf("Thank you for using, Use again!\n");
@@ -174,3 +178,5 @@ void analyzeBill(){
     printf("\nUnits Used    : %d", minUnit);
 	printf("\n----------------------------------\n");
 }
+
+
