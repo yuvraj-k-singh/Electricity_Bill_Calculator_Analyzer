@@ -9,6 +9,8 @@ Developer: Yuvraj Kumar Singh
 #include<stdlib.h>
 
 #define MAX_USERS 100
+#define FIXED 50
+#define METER_RENT 10
 
 struct Consumer{
 	char name[30];
@@ -22,7 +24,7 @@ int userCount = 0;
 
 //function prototype
 void addConsumer();
-
+void calculateBill();
 
 int main()
 {
@@ -47,6 +49,9 @@ int main()
     		case 1:
     			addConsumer();
     			break;
+    		case 2:
+    			calculateBill();
+    			break;
     		case 6:
     			printf("Thank you for using, Use again!\n");
     			printf("Exiting program.......");
@@ -59,6 +64,7 @@ int main()
 	return 0;
 }
 
+//1. add consumer
 void addConsumer(){
 	int i;
 
@@ -96,3 +102,33 @@ void addConsumer(){
 
     printf("Consumer added successfully!\n");
 }
+
+//2. calculate bill
+void calculateBill(){
+	printf("\n---------CALCULATE BILL----------\n");
+	int unit = 0;
+	float amount = 0;
+	
+	printf("Enter unit consumed: ");
+	scanf("%d", &unit);
+	
+	if(unit <= 50){
+		amount = unit * 4.27;
+	} else if(unit >= 51 && unit <= 150){
+		amount = unit * 5.23;
+	} else if(unit >= 151 && unit <= 300){
+		amount = unit * 6.61;
+	} else if(unit >= 301){
+		amount = unit * 6.80;
+	}
+	
+	amount += FIXED + METER_RENT;
+	
+	printf("\nUnits Used    : %d", unit);
+	printf("\nFixed Price   : %d", FIXED);
+	printf("\nMeter Rent    : %d", METER_RENT);
+    printf("\nTotal Bill    : RS %.2f", amount);
+    printf("\n----------------------------------\n");
+    return;
+}
+
