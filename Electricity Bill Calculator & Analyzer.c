@@ -67,6 +67,7 @@ int main()
     			break;
     		case 6:
     			printf("Thank you for using, Use again!\n");
+    			saveData();
     			printf("Exiting program.......");
     			exit(0);
     		default:
@@ -114,6 +115,8 @@ void addConsumer(){
     userCount++;
 
     printf("Consumer added successfully!\n");
+    saveData();
+    return;
 }
 
 //2. calculate bill
@@ -247,6 +250,7 @@ void addBill(){
 	users[userIndex].unit = units;
 	printf("Bill Added Successfully..............\n");
 	printf("\n-----------------------------------\n");
+	saveData();
 	return;
 }
 
@@ -262,4 +266,36 @@ void powerSaving(){
     printf("\n-----------------------------------\n");
 }
 
+
+//6. saveData
+void saveData(){
+    FILE *fp;
+    int i;
+
+    if (userCount == 0) {
+        printf("No data available to save!\n");
+        return;
+    }
+
+    fp = fopen("electricity_data.txt", "w");
+
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    fprintf(fp, "Total Consumers: %d\n\n", userCount);
+
+    for (i = 0; i < userCount; i++) {
+        fprintf(fp, "Name      : %s\n", users[i].name);
+        fprintf(fp, "Room No   : %d\n", users[i].room_no);
+        fprintf(fp, "Meter No  : %d\n", users[i].meter_no);
+        fprintf(fp, "Units     : %.2f\n", users[i].unit);
+        fprintf(fp, "Amount    : RS %.2f\n", users[i].amount);
+        fprintf(fp, "--------------------------\n");
+    }
+
+    fclose(fp);
+    printf("Data saved successfully in text file!\n");
+}
 
