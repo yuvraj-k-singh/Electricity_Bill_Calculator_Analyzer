@@ -205,6 +205,8 @@ void addBill(){
 	printf("Enter Consumer Name: ");
 	fgets(name, sizeof(name), stdin);
 	
+	name[strcspn(name, "\n")] = '\0';
+	
 	//check consumer
 	for(i=0; i<userCount; i++){
 		if(strcmp(name, users[i].name) == 0){
