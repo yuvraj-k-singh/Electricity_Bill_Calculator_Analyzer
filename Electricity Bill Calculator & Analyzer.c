@@ -25,6 +25,7 @@ int userCount = 0;
 //function prototype
 void addConsumer();
 void calculateBill();
+void analyzeBill();
 
 int main()
 {
@@ -37,8 +38,8 @@ int main()
     	printf("=================================================\n");
     	printf("1. Add New Consumer\n");
     	printf("2. Calculate Bill\n");
-    	printf("3. ADD New Bill\n");
-    	printf("4. Analyze Monthly Bill\n");
+    	printf("3. Analyze Monthly Bill\n");
+    	printf("4. ADD New Bill\n");
     	printf("5. Power Saving Tips\n");
     	printf("6. Exit\n");
     	printf("--------------------------------------------------\n");
@@ -51,6 +52,9 @@ int main()
     			break;
     		case 2:
     			calculateBill();
+    			break;
+    		case 3:
+    			analyzeBill();
     			break;
     		case 6:
     			printf("Thank you for using, Use again!\n");
