@@ -9,8 +9,8 @@ Developer: Yuvraj Kumar Singh
 #include<stdlib.h>
 
 #define MAX_USERS 100
-#define FIXED 50
-#define METER_RENT 10
+#define FIXED 50.00
+#define METER_RENT 10.00
 
 struct Consumer{
 	char name[30];
@@ -125,8 +125,8 @@ void calculateBill(){
 	amount += FIXED + METER_RENT;
 	
 	printf("\nUnits Used    : %d", unit);
-	printf("\nFixed Price   : %d", FIXED);
-	printf("\nMeter Rent    : %d", METER_RENT);
+	printf("\nFixed Price   : RS %.2f", FIXED);
+	printf("\nMeter Rent    : RS %.2f", METER_RENT);
     printf("\nTotal Bill    : RS %.2f", amount);
     printf("\n----------------------------------\n");
     return;
