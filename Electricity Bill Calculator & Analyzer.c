@@ -29,9 +29,11 @@ void analyzeBill();
 void addBill();
 void powerSaving();
 void saveData();
+void loadData();
 
 int main()
 {
+	loadData();
 	int choice, user_index = -1;
 	
 	//main menu of program
@@ -297,5 +299,40 @@ void saveData(){
 
     fclose(fp);
     printf("Data saved successfully in text file!\n");
+}
+
+void loadData(){
+	    FILE *fp;
+    int i;
+
+    fp = fopen("electricity_data.txt", "r");
+
+    if (fp == NULL) {
+        // File not found is NOT an error (first run)
+        printf("No previous data found. Starting fresh.\n");
+        return;
+    }
+
+    // Read total consumers
+    fscanf(fp, "Total Consumers: %d\n\n", &userCount);
+
+    if (userCount > MAX_USERS) {
+        printf("Data file corrupted!\n");
+        fclose(fp);
+        userCount = 0;
+        return;
+    }
+
+    for (i = 0; i < userCount; i++) {
+        fscanf(fp, "Name      : %[^\n]\n", users[i].name);
+        fscanf(fp, "Room No   : %d\n", &users[i].room_no);
+        fscanf(fp, "Meter No  : %d\n", &users[i].meter_no);
+        fscanf(fp, "Units     : %f\n", &users[i].unit);
+        fscanf(fp, "Amount    : RS %f\n", &users[i].amount);
+        fscanf(fp, "--------------------------\n");
+    }
+
+    fclose(fp);
+    printf("Previous data loaded successfully!\n");
 }
 
