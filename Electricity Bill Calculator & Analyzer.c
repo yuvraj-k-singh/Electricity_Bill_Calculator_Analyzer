@@ -8,7 +8,7 @@ Developer: Yuvraj Kumar Singh
 #include<string.h>
 #include<stdlib.h>
 
-#define MAX_USERS 100
+#define MAX_USERS 25
 #define FIXED 50.00
 #define METER_RENT 10.00
 
@@ -83,6 +83,8 @@ int main()
 //1. add consumer
 void addConsumer(){
 	int i;
+	
+	printf("\n---------ADD NEW CONSUMER----------\n");
 
     if (userCount >= MAX_USERS) {
         printf("Maximum consumers reached!\n");
@@ -117,6 +119,7 @@ void addConsumer(){
     userCount++;
 
     printf("Consumer added successfully!\n");
+    printf("\n-----------------------------------\n");
     saveData();
     return;
 }
@@ -232,6 +235,10 @@ void addBill(){
 		printf("\n-----------------------------------\n");
 		return;
 	}
+	
+	//reset user unit to 0 every time so new unit will update
+	users[userIndex].unit = 0;
+	users[userIndex].amount = 0.00;
 	
 	printf("Enter unit consumed: ");
 	scanf("%d", &units);
