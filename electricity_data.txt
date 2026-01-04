@@ -1,0 +1,26 @@
+Total Consumers: 4
+
+Name      : yuvraj
+Room No   : 1
+Meter No  : 1
+Units     : 98.00
+Amount    : RS 572.54
+--------------------------
+Name      : yogesh
+Room No   : 2
+Meter No  : 2
+Units     : 0.00
+Amount    : RS 0.00
+--------------------------
+Name      : anish
+Room No   : 3
+Meter No  : 3
+Units     : 0.00
+Amount    : RS 0.00
+--------------------------
+Name      : vivek
+Room No   : 6
+Meter No  : 6
+Units     : 65.00
+Amount    : RS 399.95
+--------------------------
